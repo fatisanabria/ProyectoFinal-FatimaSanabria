@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import Styles from './ItemDetail.module.css'
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 import { Container, Row} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { dataBase } from '../firestore';
 import { doc, getDoc } from 'firebase/firestore';
 import { CartContext } from '../Context/CartContext';
+import Error404 from "../Error404"
 
 function ItemDetail() {
     const [product, setProduct] = useState([]);
@@ -19,11 +20,8 @@ function ItemDetail() {
             .then(res => setProduct({ id: res.id, ...res.data(),cantidad:0 }))
     }, [id])
 
-    const { carrito, añadirProd } = useContext(CartContext);
+    const { añadirProd } = useContext(CartContext);
 
-    useEffect(() => {
-        console.log("itemList has changed:", carrito);
-    }, [carrito]);
 
     const [contador, setContador] =useState(1)
 
@@ -33,7 +31,11 @@ function ItemDetail() {
     function suma (){
         setContador(contador + 1);
     }
-
+ if(product.nombre === undefined){
+        return(
+            <Error404/>
+        )
+    }
 
     return (
         <Container className={`${Styles.carta}`}>
@@ -52,9 +54,9 @@ function ItemDetail() {
                     <p className="p-2 m-1 ">{contador}</p>
                     <button disabled={contador >= product.stock } onClick={suma} className="p-2 m-1 btn btn-dark">+</button>
                 </div>
-                    <Button onClick={() => {
+                <Link to={"/"}><Button onClick={() => {
                         añadirProd(product,contador);
-                    }} variant='success'>Añadir a carrito</Button>
+                    }} variant='success'>Añadir a carrito</Button></Link>
                 </div>
             </section>
         </Container>

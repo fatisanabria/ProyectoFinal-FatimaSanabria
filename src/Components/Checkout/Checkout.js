@@ -8,11 +8,10 @@ import { Link } from "react-router-dom";
 
 function Checkout (){
     const {carrito,precioTotal} = useContext(CartContext)
-    console.log(carrito)
     return (
         <Container>
                 {carrito.map(prod=>
-                    <ProductList item={prod} /> 
+                    <ProductList item={prod} key={prod.id} /> 
                 )
                 }
                 <div className={`${Styles.carta} d-flex flex-column align-items-center`}>

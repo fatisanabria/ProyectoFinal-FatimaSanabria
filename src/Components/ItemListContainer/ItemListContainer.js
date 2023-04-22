@@ -19,11 +19,9 @@ const ItemListContainer = () => {
             const queryFilter = query(queryCollection, where('categoria', '==', id))
             getDocs(queryFilter)
                 .then(res => setItem(res.docs.map(p => ({ id: p.id, ...p.data() }))))
-                console.log(item)
         } else {
             getDocs(queryCollection)
                 .then(res => setItem(res.docs.map(p => ({ id: p.id, ...p.data() }))))
-                console.log(item)
         }
     }, [id]);
 

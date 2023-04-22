@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
-import Styles from "./Form.module.css"
 import { ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { getFirestore, collection, addDoc, } from 'firebase/firestore';
+import Styles from "./Forms.module.css"
 
 function Form() {
     const { carrito, precioTotal,limpiarCarrito } = useContext(CartContext);
@@ -53,9 +53,9 @@ const navegar =useNavigate()
 
     
     return (
-        <div classnombre={`container d-flex flex-column justify-content-center text-center ${Styles.container}`}>
+        <div classnombre={` bg-dark ${Styles.carta}`}>
             <ToastContainer/>
-            <form classnombre={`${Styles.formBody} `} onSubmit={submit}>
+            <form classnombre={`bg-dark ${Styles.contenido} `} onSubmit={submit}>
                 <div>
                     <label htmlFor="nombre">nombre:</label>
                     <input
@@ -96,8 +96,8 @@ const navegar =useNavigate()
                         required
                     />
                 </div>
-                <div classnombre={`d-flex justify-content-center`}>
-                <button classnombre={`${Styles.formButton} `} type="submit">submit</button>
+                <div classnombre={``}>
+                <button classnombre={`${Styles.boton} `} type="submit">submit</button>
                 </div>
             </form>
         </div>

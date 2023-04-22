@@ -8,7 +8,6 @@ function ProductList({ item }) {
     const {borrarItem} = useContext(CartContext)
 
 
-    console.log(item)
     return (
         <>
         <Row className={`mt-5 ${Styles.carta}`}>
