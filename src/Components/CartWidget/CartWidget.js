@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 import { CartContext } from "../Context/CartContext";
 
 function CartWidget() {
-    const {productList} = useContext(CartContext)
-    const contar = productList.length;
+    const {totalProd} = useContext(CartContext)
+
     return (
         <div className='d-flex align-items-center'>
-            <p className='bg-body-tertiary rounded-circle px-2'>{contar}</p>
+            <p className='bg-body-tertiary rounded-circle px-2'>{totalProd()}</p>
             <div>
-                <Link to={`/Checkout`}><FontAwesomeIcon icon={faCartShopping}/></Link>
+                <Link to={`/Cart`}><FontAwesomeIcon icon={faCartShopping}/></Link>
             </div>
         </div>
     )

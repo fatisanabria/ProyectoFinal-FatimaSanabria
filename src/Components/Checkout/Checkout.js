@@ -3,20 +3,21 @@ import { Container, Row } from "react-bootstrap";
 import { CartContext } from "../Context/CartContext";
 import ProductList from "./ProductList"
 import Styles from "./Checkout.module.css"
+import { Link } from "react-router-dom";
 
 
 function Checkout (){
-    const {productList} = useContext(CartContext)
-    console.log(productList)
+    const {carrito,precioTotal} = useContext(CartContext)
+    console.log(carrito)
     return (
         <Container>
-                {productList.map(prod=>
+                {carrito.map(prod=>
                     <ProductList item={prod} /> 
                 )
                 }
                 <div className={`${Styles.carta} d-flex flex-column align-items-center`}>
-                    <strong className="p-4 fs-1">Precio final: ${}</strong>
-                    <button className="btn btn-success mb-4">Comprar</button>
+                    <strong className="p-4 fs-1">Precio final: ${precioTotal()}</strong>
+                    <Link to={"/Form"}><button className="btn btn-success mb-4">Comprar</button></Link>
                 </div>
         </Container>
     )

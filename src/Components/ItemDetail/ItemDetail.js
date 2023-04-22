@@ -16,14 +16,24 @@ function ItemDetail() {
         const queryDb = dataBase;
         const queryDoc = doc(queryDb, 'productos', id);
         getDoc(queryDoc)
-            .then(res => setProduct({ id: res.id, ...res.data() }))
+            .then(res => setProduct({ id: res.id, ...res.data(),cantidad:0 }))
     }, [id])
 
-    const { addToList, productList } = useContext(CartContext);
+    const { carrito, añadirProd } = useContext(CartContext);
 
     useEffect(() => {
-        console.log("itemList has changed:", productList);
-    }, [productList]);
+        console.log("itemList has changed:", carrito);
+    }, [carrito]);
+
+    const [contador, setContador] =useState(1)
+
+    function resta (){
+        setContador(contador - 1);
+    }
+    function suma (){
+        setContador(contador + 1);
+    }
+
 
     return (
         <Container className={`${Styles.carta}`}>
@@ -36,8 +46,14 @@ function ItemDetail() {
                     <p>{product.descripcion}</p>
                     <p>Categoria: {product.categoria}</p>
                     <strong className='mb-4'>Precio: ${product.precio}</strong>
+                    <strong>Stock: {product.stock}</strong>
+                    <div className="d-flex flex-row justify-content-center border border-dark ms-5 mb-4">
+                    <button disabled={ contador <= 1} onClick={resta} className="p-2 m-1 btn btn-dark">-</button>
+                    <p className="p-2 m-1 ">{contador}</p>
+                    <button disabled={contador >= product.stock } onClick={suma} className="p-2 m-1 btn btn-dark">+</button>
+                </div>
                     <Button onClick={() => {
-                        addToList(product);
+                        añadirProd(product,contador);
                     }} variant='success'>Añadir a carrito</Button>
                 </div>
             </section>

@@ -1,10 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Col, Row } from "react-bootstrap";
 import Card from 'react-bootstrap/Card';
 import Styles from "./ProductList.module.css";
+import { CartContext } from "../Context/CartContext";
 
-const contador = 1
 function ProductList({ item }) {
+    const {borrarItem} = useContext(CartContext)
+
+
     console.log(item)
     return (
         <>
@@ -18,17 +21,13 @@ function ProductList({ item }) {
                 </div>
             </Col>
             <Col className={`${Styles.posicion} d-flex flex-column`}>
-                <div className="d-flex flex-row justify-content-center border border-dark ms-5">
-                    <button className="p-2 m-1 btn btn-dark">-</button>
-                    <p className="p-2 m-1 ">{item.quantity}</p>
-                    <button className="p-2 m-1 btn btn-dark">+</button>
-                </div>
+                <p className="text-secondary ms-5">Cantidad: {item.cantidad}</p>
                 <p className="text-secondary ms-5">Stock: {item.stock}</p>
             </Col>
             <Col className={`${Styles.posicion}`}>
-                <div className={`${Styles.precio}`}>
-                <strong className="fs-2">Precio: ${item.precio}</strong>
-                <button className="btn btn-outline-danger m-2">Eliminar</button>
+                <div className={`${Styles.precio }`}>
+                <strong className="fs-2">Precio: ${item.precio * item.cantidad}</strong>
+                <button onClick={()=>{borrarItem(item.id)}} className="btn btn-outline-danger m-2">Eliminar</button>
                 </div>
             </Col>
         </Row>
