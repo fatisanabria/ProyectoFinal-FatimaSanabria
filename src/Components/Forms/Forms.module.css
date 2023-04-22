@@ -1,6 +1,13 @@
 .carta{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: baseline;
-    background-color: black;
+    border-style: outset;
+    margin-top: 2rem;
+    padding: 5rem;
+}
+
+.contenido{
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
 }

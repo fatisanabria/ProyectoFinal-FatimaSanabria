@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
+import Styles from "./Forms.module.css"
 import { ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { getFirestore, collection, addDoc, } from 'firebase/firestore';
-import Styles from "./Forms.module.css"
 
 function Form() {
     const { carrito, precioTotal,limpiarCarrito } = useContext(CartContext);
@@ -53,11 +53,12 @@ const navegar =useNavigate()
 
     
     return (
-        <div classnombre={` bg-dark ${Styles.carta}`}>
+        <div className={`container  ${Styles.carta}`}>
             <ToastContainer/>
-            <form classnombre={`bg-dark ${Styles.contenido} `} onSubmit={submit}>
-                <div>
-                    <label htmlFor="nombre">nombre:</label>
+            <h1 className='mb-5'><strong>Ultimo paso: completa con tu informacion de contacto</strong></h1>
+            <form className={`${Styles.contenido} `} onSubmit={submit}>
+                <div className='mb-5'>
+                    <label htmlFor="nombre">Nombre:</label>
                     <input
                         id="nombre"
                         type="text"
@@ -66,7 +67,7 @@ const navegar =useNavigate()
                         required
                     />
                 </div>
-                <div>
+                <div className='mb-5'>
                     <label htmlFor="email">Email:</label>
                     <input
                         id="email"
@@ -76,8 +77,8 @@ const navegar =useNavigate()
                         required
                     />
                 </div>
-                <div>
-                    <label htmlFor="emailConfirmation">Email Confirmation:</label>
+                <div className='mb-5'>
+                    <label htmlFor="emailConfirmation">Confirmacion de email:</label>
                     <input
                         id="emailConfirmacion"
                         type="email"
@@ -86,7 +87,7 @@ const navegar =useNavigate()
                         required
                     />
                 </div>
-                <div>
+                <div className='mb-5'>
                     <label htmlFor="telefono">telefono:</label>
                     <input
                         id="telefono"
@@ -96,8 +97,8 @@ const navegar =useNavigate()
                         required
                     />
                 </div>
-                <div classnombre={``}>
-                <button classnombre={`${Styles.boton} `} type="submit">submit</button>
+                <div className={``}>
+                <button className={`btn btn-success fs-2`} type="submit">Comprar</button>
                 </div>
             </form>
         </div>
