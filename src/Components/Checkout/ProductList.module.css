@@ -1,0 +1,27 @@
+.carta{
+    border-style: outset;
+    border-radius: 2%;
+    background-color: rgb(253, 253, 253);
+
+}
+
+.posicion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen{
+    width: 20rem;
+    height: 20rem;
+    border-style: outset;
+    translate: 0rem -4rem;
+    border-radius: 10%;
+}
+
+.precio{
+    translate: -2rem 0rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;}

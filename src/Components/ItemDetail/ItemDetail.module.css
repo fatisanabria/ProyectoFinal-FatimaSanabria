@@ -1,0 +1,32 @@
+
+.img{
+    width: 400px;
+    border-radius: 10%;
+}
+
+.carta{
+    border-radius: 5%;
+    border-style: outset;
+    margin-top: 30px;
+    padding: 0px 30px 30px 30px;
+    background-color: rgb(253, 253, 253);
+}
+
+h1{
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.informacion{
+    margin: 50px 50px 0 50px;
+    font-size: 1.5rem;
+    font-family:'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    
+}
+
+.button{
+    margin-top: 10px;
+}
